@@ -1,3 +1,5 @@
+# TDD
+
 ## Repositório Git
 
 https://github.com/joycesilvaaa/tdd.git
@@ -8,79 +10,102 @@ https://github.com/joycesilvaaa/tdd.git
 - pytest
 - pytest-cov para cobertura de testes
 
-## Estrutura do projeto
+## Estrutura do Projeto
 
-- `triangle.py` - lógica do exercício 1
-- `person.py` - classes `Person`, `Email` e `PersonDAO` para o exercício 2
-- `salary.py` - cálculo de salário para o exercício 3
-- `tests/` - testes unitários
-- `requirements.txt` - dependências de teste
+- `triangle.py` - Lógica do exercício 1 (classificação de triângulos)
+- `person.py` - Classes `Person`, `Email` e `PersonDAO` para o exercício 2
+- `salary.py` - Cálculo de salário para o exercício 3
+- `tests/` - Testes unitários
+- `requirements.txt` - Dependências de teste
 
-## Como preparar o ambiente
+## Instalação e Configuração
 
-1. Instale as dependências do projeto:
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/joycesilvaaa/tdd.git
+cd tdd
+```
+
+2. Crie e ative um ambiente virtual:
 
 ```bash
 python3 -m venv .venv
-source .venv/bin/activate
+source .venv/bin/activate  # No Windows: .venv\Scripts\activate
+```
+
+3. Instale as dependências:
+
+```bash
 pip install -r requirements.txt
 ```
 
-## Como executar os testes
+## Execução de Testes
+
+Para executar todos os testes:
 
 ```bash
 python3 -m pytest
 ```
 
-## Como gerar cobertura de testes
+## Cobertura de Testes
+
+Para gerar o relatório de cobertura:
 
 ```bash
 python3 -m pytest --cov=. --cov-report=html
 ```
 
-Após a execução, o relatório de cobertura estará disponível em `htmlcov/index.html`.
+O relatório HTML estará disponível em `htmlcov/index.html`.
 
-## Evidências de cobertura por exercício
+## Evidências de Cobertura por Exercício
 
-- Exercício 1 (`triangle.py`): cobertura de 100%
-- Exercício 2 (`person.py`): cobertura de 100% (inclui `PersonDAO.save` e validações de nome, idade e email)
-- Exercício 3 (`salary.py`): cobertura de 100%
+| Exercício | Arquivo       | Cobertura |
+|-----------|---------------|-----------|
+| 1         | `triangle.py` | 100%     |
+| 2         | `person.py`   | 100%     |
+| 3         | `salary.py`   | 100%     |
 
-Os relatórios detalhados de cobertura estão disponíveis em `htmlcov/index.html`.
-
-## Exercícios implementados
+## Exercícios Implementados
 
 ### Exercício 1 - Triângulo
 
-- Classe/funcionalidade em `triangle.py`
-- Testes em `tests/test_triangle.py`
-- Casos cobertos:
-  - Triângulo escaleno válido
-  - Triângulo isósceles válido
-  - Triângulo equilátero válido
-  - 3 permutações de isósceles válido
-  - Um valor zero
-  - Um valor negativo
-  - Soma de dois lados igual ao terceiro (3 permutações)
-  - Soma de dois lados menor que o terceiro (3 permutações)
-  - Todos os três valores iguais a zero
+**Arquivo:** `triangle.py`  
+**Testes:** `tests/test_triangle.py`
+
+Implementa a classificação de triângulos baseada em três lados inteiros. Valida se os lados formam um triângulo e classifica como equilátero, isósceles ou escaleno.
+
+**Casos de teste cobertos:**
+- Triângulo escaleno válido
+- Triângulo isósceles válido (3 permutações)
+- Triângulo equilátero válido
+- Valores zero
+- Valores negativos
+- Soma de dois lados igual ao terceiro (3 permutações)
+- Soma de dois lados menor que o terceiro (3 permutações)
+- Todos os três valores iguais a zero
 
 ### Exercício 2 - Validação de Person
 
-- Classes em `person.py`
-- Testes em `tests/test_person.py`
-- Validações realizadas:
-  - nome com pelo menos duas partes e apenas letras
-  - idade no intervalo [1, 200]
-  - pelo menos um email associado
-  - formato de email `local@dominio.tld`
+**Arquivos:** `person.py`  
+**Testes:** `tests/test_person.py`
 
-### Exercício 3 - Cálculo de salário
+Implementa validação de objetos `Person` com regras específicas para nome, idade e emails.
 
-- Classes em `salary.py`
-- Testes em `tests/test_salary.py`
-- Regras implementadas:
-  - Desenvolvedor: 20% de desconto para salário >= 3.000,00 e 10% caso contrário
-  - DBA: 25% de desconto para salário >= 2.000,00 e 15% caso contrário
-  - Testador: 25% de desconto para salário >= 2.000,00 e 15% caso contrário
-  - Gerente: 30% de desconto para salário >= 5.000,00 e 20% caso contrário
+**Validações realizadas:**
+- Nome: pelo menos duas partes, contendo apenas letras
+- Idade: intervalo [1, 200]
+- Emails: pelo menos um associado, formato `local@dominio.tld`
+
+### Exercício 3 - Cálculo de Salário
+
+**Arquivo:** `salary.py`  
+**Testes:** `tests/test_salary.py`
+
+Calcula o salário líquido de funcionários baseado no cargo e salário base.
+
+**Regras implementadas:**
+- **Desenvolvedor:** 20% de desconto se salário >= 3.000,00; 10% caso contrário
+- **DBA:** 25% de desconto se salário >= 2.000,00; 15% caso contrário
+- **Testador:** 25% de desconto se salário >= 2.000,00; 15% caso contrário
+- **Gerente:** 30% de desconto se salário >= 5.000,00; 20% caso contrário
